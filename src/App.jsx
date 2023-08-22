@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function App() {
-  const [contactData, setContactData] = useState("");
+  const [contactData, setContactData] = useState([]);
   const handleContactPickup = async () => {
     try {
       const contacts = await navigator.contacts.select(["name", "tel"], {
@@ -16,9 +16,11 @@ function App() {
   return (
     <React.Fragment>
       <button onClick={handleContactPickup}>pickup contact</button>
-      <div>
-        {contactData.name} - {contactData.tel}
-      </div>
+      {contactData.map((contact, index) => (
+        <div key={index}>
+          {contact.name} - {contact.tel}
+        </div>
+      ))}
     </React.Fragment>
   );
 }
