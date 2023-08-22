@@ -4,15 +4,14 @@ function App() {
   const [contactData, setContactData] = useState([]);
   const handleContactPickup = async () => {
     try {
-      const contacts = await navigator.contacts.select(["name", "tel"], {
-        multiple: true,
-      });
-      console.log("contact", contacts);
-      setContactData(contactData);
+      const contactsValues = await navigator.contacts.select(["name", "tel"]);
+      console.log("contact", contactsValues);
+      setContactData(contactsValues);
     } catch (err) {
       console.log(err);
     }
   };
+  console.log(contactData);
   return (
     <React.Fragment>
       <button onClick={handleContactPickup}>pickup contact</button>
