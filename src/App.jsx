@@ -16,7 +16,7 @@ function App() {
   return (
     <React.Fragment>
       <button onClick={handleContactPickup}>pickup contact</button>
-      {JSON.stringify(contactData)}
+      {JSON.stringify(contactData?.[0])}
     </React.Fragment>
   );
 }
