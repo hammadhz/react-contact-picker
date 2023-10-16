@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 function App() {
-  const [contactData, setContactData] = useState(null);
+  const [contactData, setContactData] = useState("");
   const handleContactPickup = async () => {
     try {
-      const contactsValues = await navigator.contacts.select(["name", "tel"]);
+      const contactsValues = await navigator.contacts.select(["tel"]);
       console.log("contact", contactsValues);
-      alert(contactsValues);
-      setContactData(contactsValues);
+      const telValue = contactsValues[0];
+      setContactData(telValue?.tel);
     } catch (err) {
       console.log(err);
     }
